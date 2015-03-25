@@ -7,7 +7,7 @@
         results = [];
 
     getTabWeb()
-        .then(webMookieWeb)
+		.then(webMookieWeb)
         .then(webPanicoWeb)
         .then(function(response) {
             utilities.addReponseToResults(results, response);
@@ -52,7 +52,7 @@
     function webPanicoWeb(response) {
         utilities.addReponseToResults(results, response);
         var deferred = Q.defer();
-        
+
         http.get({
             hostname: 'panicoenlaxbox.com'
         }, function(response) {

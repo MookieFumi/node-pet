@@ -1,6 +1,5 @@
 var utilities = (function() {
     'use strict';
-
     return {
         addReponseToResults: function(results, response) {
             results.push({
