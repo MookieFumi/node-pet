@@ -3,30 +3,30 @@
 
     var http = require('http'),
         Q = require('q'),
+        utilities = require('./utilities'),
         results = [];
 
     getTabWeb()
         .then(webMookieWeb)
         .then(webPanicoWeb)
-        .then(function(res) {
-            results.push({
-                name: res.headers.server,
-                statusCode: res.statusCode
-            });
-        })
-        .finally(function() {
-            console.log(results);
+        .then(function(response) {
+            utilities.addReponseToResults(results, response);
         })
         .fail(function(error) {
             console.log('Promise failed', error.code);
+        })
+        .finally(function() {
+            console.log(results);
+            process.exit();
         });
 
     function getTabWeb() {
         var deferred = Q.defer();
+
         http.get({
             hostname: 'tabconsultores.com'
-        }, function(res) {
-            deferred.resolve(res);
+        }, function(response) {
+            deferred.resolve(response);
         }).on('error', function(error) {
             deferred.reject(error);
         });
@@ -34,17 +34,14 @@
         return deferred.promise;
     }
 
-    function webMookieWeb(res) {
-        results.push({
-            name: res.headers.server,
-            statusCode: res.statusCode
-        });
-
+    function webMookieWeb(response) {
+        utilities.addReponseToResults(results, response);
         var deferred = Q.defer();
+
         http.get({
             hostname: 'mookiefumi.com'
-        }, function(res) {
-            deferred.resolve(res);
+        }, function(response) {
+            deferred.resolve(response);
         }).on('error', function(error) {
             deferred.reject(error);
         });
@@ -52,17 +49,14 @@
         return deferred.promise;
     }
 
-    function webPanicoWeb(res) {
-        results.push({
-            name: res.headers.server,
-            statusCode: res.statusCode
-        });
-
+    function webPanicoWeb(response) {
+        utilities.addReponseToResults(results, response);
         var deferred = Q.defer();
+        
         http.get({
             hostname: 'panicoenlaxbox.com'
-        }, function(res) {
-            deferred.resolve(res);
+        }, function(response) {
+            deferred.resolve(response);
         }).on('error', function(error) {
             deferred.reject(error);
         });

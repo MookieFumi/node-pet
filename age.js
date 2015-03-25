@@ -36,7 +36,7 @@
         ask("Age", /^\d+$/, function(age) {
             person.name = name;
             person.age = age;
-            
+
             console.log(person);
             process.exit();
         });

@@ -24,5 +24,4 @@
         console.log("End fast operation");
     }
 
-    console.log("---------------------------");
 })();
