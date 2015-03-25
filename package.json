@@ -1,0 +1,14 @@
+{
+  "name": "node-pet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "promises.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Miguel Angel Martin Hernandez <mookiefumi@outlook.com> (http://www.mookiefumi.com)",
+  "license": "ISC",
+  "dependencies": {
+    "q": "^1.2.0"
+  }
+}
